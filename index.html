@@ -1,0 +1,169 @@
+<html>
+  <head>
+    <title>Duels de citations</title>
+    <link rel="stylesheet" href="bulma.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  </head>
+  <body>
+    <nav id="nav-login" class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-end">
+        <div class="navbar-item">
+          <div class="buttons">
+            <a id="btn-open-login-modal" class="button is-success" onclick="setTimeout(modalOpen('mdl-login'),10000);">
+              Connexion
+            </a>
+          </div>
+        </div>
+    </div>
+    </nav>
+    <section class="hero is-primary">
+      <div class="hero-body">
+        <h1 class="title">Duels de citations</h1>
+        <p class="subtitle">Quelle est votre citation favorite ?</p>
+        
+      </div>
+    </section>
+    <section class="section">
+      <div class="tabs is-centered">
+        <ul>
+          <li class="is-active" id="tab-duel">
+            <a>Voter</a>
+          </li>
+          <li id="tab-tout"><a>Toutes les citations</a></li>
+          <li id="tab-add" style="display:none;"><a>Ajouter une citation</a></li>
+        </ul>
+      </div>
+      <div class="columns" id="div-duel">
+        <!-- Citation 1 -->
+        <div id="div-column-left" class="column">
+          <div class="card">
+            <div class="columns card-content">
+              <div class="column is-one-third">
+                <div class="card-image">
+                  <figure id="image-column-left" class="image">
+                  </figure>
+                </div>
+              </div>
+              <div class="column is-8">
+                <p id="title-column-left" class="title"></p>
+                <p id="subtitle-column-left" class="subtitle"></p>
+              </div>
+            </div>
+            <div class="card-content">
+              <div class="columns is-centered">
+                <p id="button-column-left" class="button is-danger">
+                  Voter pour la citation de gauche !
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Citation 2 -->
+        <div id="div-column-right" class="column">
+          <div class="card">
+            <div class="columns card-content">
+              <div class="column is-8">
+                <p id="title-column-right" class="title"></p>
+                <p id="subtitle-column-right" class="subtitle"></p>
+              </div>
+              <div class="column is-one-third">
+                <div class="card-image">
+                  <figure id="image-column-right" class="image"></figure>
+                </div>
+              </div>
+            </div>
+            <div class="card-content">
+              <div class="columns is-centered">
+                <p id="button-column-right" class="button is-info">Voter pour la citation de droite !</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="div-tout">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Classement</th>
+              <th>Personnage</th>
+              <th>Citation</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="tbody-classement">
+          </tbody>
+        </table>
+      </div>
+      <div class="columns is-centered " id="div-add">
+        <div class="box column is-half">
+          <div class="field">
+            <label class="label">Citation</label>
+            <div class="control">
+              <textarea class="textarea" id="input-add-quote" rows="2" placeholder="Ex: They taste like...burning."></textarea>
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">Personnage</label>
+            <div class="control">
+              <input class="input" id="input-add-character" type="text" placeholder="Ex: Ralph Wiggum">
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">Origine</label>
+            <div class="control">
+              <input class="input" id="input-add-origin" type="text" placeholder="Ex: The Simpsons">
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">Lien d'image</label>
+            <div class="control">
+              <input class="input" id="input-add-image" type="text" placeholder="https://image.png">
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">Dirrection d'image</label>
+            <div class="control">
+              <div class="select">
+                <select id="input-add-characterDirection">
+                  <option value="-1" selected disabled>Choisir</option>
+                  <option value="Left">Left</option>
+                  <option value="Right">Right</option>
+                  <option value="0">Sans image</option>
+                </select>
+              </div>            
+            </div>
+          </div>
+          <div id="form-message-add" class="message" style="display:none;">
+          </div>
+          <div class="buttons is-centered">
+            <button class="button is-primary" onclick="addQuote();">Ajouter</button>
+          </div>
+        </div>       
+      </div>
+      
+    </section>
+    <div id="mdl-login" class="modal">
+      <div class="modal-background"></div>
+      <div class="modal-card">
+        <header class="modal-card-head">
+          <p class="modal-card-title">Connexion</p>
+          <button class="delete" onclick="modalClose('mdl-login');"></button>
+        </header>
+        <section class="modal-card-body">
+          <p id="elt-affichage-login">
+            <!-- Fonction Connexion -->
+            <label for="apiKey" class="label">API Key</label>        
+            <input id="apiKey" type="password" placeholder="Clé API"  class="input"><br>
+            <span id="error-login" class="help is-danger"></span>
+            <button class="button is-success" onclick="lanceWhoamiEtInsereLogin();">Connexion</button>
+          </p>
+        </section>
+        <footer class="modal-card-foot" style="justify-content: flex-end">
+          <button class="button" onclick="modalClose('mdl-login');">Fermer</button>
+        </footer>
+      </div>
+    </div>
+    <script src="client.js"></script>
+  </body>
+</html>

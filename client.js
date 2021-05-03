@@ -206,10 +206,10 @@ function addQuote()
     characterDirection = "";
   const origin = document.getElementById('input-add-origin').value;
   if ( quote != "" && character != "" && origin != "" ) {
-    const apiKey = document.getElementById('button-deconnect').value;
+    const apiKey = document.getElementById('apiKey').value;
     requeteAddQuote(apiKey,quote,character,image,characterDirection,origin);
     formAddQuote(quote,character,origin,true);
-    setTimeout(updateDataTab, 20);
+    setTimeout(updateDataTab, 30);
     return true;
   } else { formAddQuote(quote,character,origin,false); return false; }
 }
@@ -311,8 +311,8 @@ function clearFormAddQuote()
 function Voter(winner, looser)
 {
   console.log("CALL Voter(...)");
-  if ( document.getElementById('button-deconnect') ) {
-    const apiKey = document.getElementById('button-deconnect').value;
+  const apiKey = document.getElementById('apiKey').value;
+  if ( apiKey != "" ) {
     fetch(serverUrl + "/citations/duels", {
       method: 'POST',
       headers: { "x-api-key": apiKey, "Content-Type": "application/json" },

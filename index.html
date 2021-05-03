@@ -10,7 +10,7 @@
     <div class="navbar-end">
         <div class="navbar-item">
           <div class="buttons">
-            <a id="btn-open-login-modal" class="button is-success" onclick="setTimeout(modalOpen('mdl-login'),10000);">
+            <a id="btn-open-login-modal" class="button is-success" onclick="modalOpen('mdl-login');">
               Connexion
             </a>
           </div>
@@ -148,7 +148,7 @@
       <div class="modal-card">
         <header class="modal-card-head">
           <p class="modal-card-title">Connexion</p>
-          <button class="delete" onclick="modalClose('mdl-login');"></button>
+          <button class="delete" onclick="modalClose('mdl-login'); document.getElementById('apiKey').value = '';"></button>
         </header>
         <section class="modal-card-body">
           <p id="elt-affichage-login">
@@ -160,7 +160,7 @@
           </p>
         </section>
         <footer class="modal-card-foot" style="justify-content: flex-end">
-          <button class="button" onclick="modalClose('mdl-login');">Fermer</button>
+          <button class="button" onclick="modalClose('mdl-login'); document.getElementById('apiKey').value = '';">Fermer</button>
         </footer>
       </div>
     </div>
